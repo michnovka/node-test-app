@@ -17,10 +17,12 @@ var connection = mysql.createConnection({
 
  app.get("/",function(req,res){
  connection.query('SELECT NOW() as tm', function(err, rows, fields) {
-   if (!err)
+   if (!err){
      console.log('The time is: ', rows[0].tm);
-   else
+	res.send(rows[0].tm);
+   }else{
      console.log('Error while performing Query.');
+   }
    });
  });
 
